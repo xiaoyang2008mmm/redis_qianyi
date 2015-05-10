@@ -30,6 +30,7 @@ class Application(tornado.web.Application):
     		(r"/", index),                                                       
     		(r"/master_get/", master_get),                                                       
     		(r"/slave_1_ip/", slave_1_ip),                                                       
+    		(r"/config_total/", config_total),                                                       
      ]                                                             
 
      	tornado.web.Application.__init__(self, handlers, **settings)
@@ -68,6 +69,19 @@ class slave_1_ip(BaseHandler):
       filename=''.join(ret.values()).split(",")[:-1]
       self.write(str(filename))
       print filename
+
+class config_total(BaseHandler):
+    def post(self):
+      slave_1		=self.get_argument("slave_1")
+      config_name_1	=self.get_argument("config_name_1")
+      config_conteny_1	=self.get_argument("config_conteny_1")
+      slave_2		=self.get_argument("slave_2")
+      config_name_2	=self.get_argument("config_name_2")
+      config_conteny_2	=self.get_argument("config_conteny_2")
+      
+      print slave_1,config_name_1,config_conteny_1,slave_2,config_name_2,config_conteny_2
+
+
 
 def main():
     parse_command_line()

@@ -95,8 +95,22 @@ $(document).ready(function () {
 		 $("#s2").text($("#slave_2_ip").val());
 		 $("#c2").text($("#config_s2").val());
         });
-
-
-
+//////////////////////////////////////////////////////////////////////////
+      $("#third_step").click(function () {
+		alert("wdqdqwdqwdqwdqwd");
+	                    $.post("/config_total/",
+                            {
+                 		slave_1:		$("#slave_1_ip").val(),
+                 		config_name_1:		$("#config_s1").val(),
+                 		config_conteny_1:	$("#s1_config_name").val(),
+                 		slave_2:		$("#slave_2_ip").val(),
+                 		config_name_2:		$("#config_s2").val(),
+                 		config_conteny_2:	$("#s2_config_name").val()
+                            },
+                            function (data) {
+				alert("data");
+                            }
+		);
+        });
 });
 
