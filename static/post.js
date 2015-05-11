@@ -98,7 +98,6 @@ $(document).ready(function () {
         });
 //////////////////////////////////////////////////////////////////////////
       $("#third_step").click(function () {
-		alert("wdqdqwdqwdqwdqwd");
 	                    $.post("/config_total/",
                             {
                  		slave_1:		$("#slave_1_ip").val(),
@@ -109,7 +108,7 @@ $(document).ready(function () {
                  		config_conteny_2:	$("#s2_config_name").val()
                             },
                             function (data) {
-				alert("data");
+				alert(data);
                             }
 		);
         });

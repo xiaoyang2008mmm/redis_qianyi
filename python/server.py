@@ -3,7 +3,7 @@ import torndb,re
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
-import sys,os
+import sys,os,socket
 import tornado.autoreload
 import time
 import salt.client
@@ -89,14 +89,15 @@ class config_total(BaseHandler):
       a_2,b_2 = commands.getstatusoutput(shell_commond_2)
       os.remove(config_name_1)
       if a_1 != 0:
-	print "%上传失败"%slave_1
+      	self.write(str("%上传失败"%slave_1))
       if a_2 != 0:
-	print "%上传失败"%slave_2
+      	self.write(str("%上传失败"%slave_2))
       #启动redis服务
       start_server="/data/server/redis/bin/redis-server  /data/server/redis/etc/%s "%config_name_1
       ret_1 = client.cmd(slave_1.encode('utf-8'), 'cmd.run', [start_server])
       ret_2 = client.cmd(slave_2.encode('utf-8'), 'cmd.run', [start_server])
-      print  ret_1,ret_2
+      print ret_1,ret_2
+      self.write(str("%s上新的redis实例启动成功\n%s上新的redis实例启动成功"%(ret_1,ret_2)))
 
 
 
