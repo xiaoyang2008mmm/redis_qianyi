@@ -82,6 +82,7 @@ $(document).ready(function () {
 		
 		}else {
                         $("#s2_config_name").val($("#s1_config_name").val()) ;
+                        $("#config_s2").val($("#config_s1").val()) 
 
                 }
         });
